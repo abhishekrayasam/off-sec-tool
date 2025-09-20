@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}Honeypot Interceptor - Dashboard{% endblock %}
+
+{% block extra_css %}
+<link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-shield-alt"></i> Honeypot Interceptor
+            </a>
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text" id="status-indicator">
+                    <i class="fas fa-circle text-danger"></i> Disconnected
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- Status Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title">Total Attacks</h6>
+                                <h3 id="total-attacks">0</h3>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-bug fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title">Unique Attackers</h6>
+                                <h3 id="unique-attackers">0</h3>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-users fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-danger text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title">Recent (24h)</h6>
+                                <h3 id="recent-attacks">0</h3>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-clock fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title">System Status</h6>
+                                <h5 id="system-status">Stopped</h5>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-server fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-cogs"></i> Control Panel</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-success" id="start-btn">
+                                <i class="fas fa-play"></i> Start Interceptor
+                            </button>
+                            <button type="button" class="btn btn-danger" id="stop-btn" disabled>
+                                <i class="fas fa-stop"></i> Stop Interceptor
+                            </button>
+                            <button type="button" class="btn btn-info" id="refresh-btn">
+                                <i class="fas fa-sync"></i> Refresh Data
+                            </button>
+                            <button type="button" class="btn btn-warning" id="export-btn">
+                                <i class="fas fa-download"></i> Export Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="row">
+            <!-- Recent Attacks -->
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-exclamation-triangle"></i> Recent Attacks</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Source IP</th>
+                                        <th>Type</th>
+                                        <th>Severity</th>
+                                        <th>Payload</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="attacks-table">
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted">No attacks detected</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Attackers & Alerts -->
+            <div class="col-lg-4">
+                <!-- Top Attackers -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-user-secret"></i> Top Attackers</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="attackers-list">
+                            <p class="text-muted text-center">No attackers detected</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Alerts -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-bell"></i> Security Alerts</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="alerts-list">
+                            <p class="text-muted text-center">No alerts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Honeypot Status -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-honey-pot"></i> Honeypot Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="honeypots-grid">
+                            <!-- Honeypot status cards will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container for Notifications -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="notification-toast" class="toast" role="alert">
+            <div class="toast-header">
+                <i class="fas fa-bell text-primary me-2"></i>
+                <strong class="me-auto">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toast-message">
+                <!-- Message will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

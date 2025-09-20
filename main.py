@@ -138,7 +138,7 @@ def main():
     )
     parser.add_argument(
         "--mode",
-        choices=["intercept", "monitor", "test"],
+        choices=["intercept", "monitor", "test", "web"],
         default="intercept",
         help="Operation mode"
     )
@@ -161,6 +161,11 @@ def main():
     if args.mode == "test":
         console.print("[yellow]Running in test mode[/yellow]")
         # Add test functionality here
+    elif args.mode == "web":
+        console.print("[blue]Starting web interface...[/blue]")
+        from web_app import create_web_ui
+        web_ui = create_web_ui(interceptor.config)
+        web_ui.run(host='0.0.0.0', port=5000, debug=args.verbose)
     else:
         interceptor.start()
 

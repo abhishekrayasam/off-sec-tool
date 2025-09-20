@@ -1,0 +1,215 @@
+/* Custom CSS for Honeypot Interceptor Dashboard */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 600;
+}
+
+/* Status indicator */
+#status-indicator {
+    font-size: 0.9rem;
+}
+
+#status-indicator.connected {
+    color: #28a745 !important;
+}
+
+#status-indicator.disconnected {
+    color: #dc3545 !important;
+}
+
+/* Attack severity indicators */
+.severity-low {
+    color: #28a745;
+}
+
+.severity-medium {
+    color: #ffc107;
+}
+
+.severity-high {
+    color: #fd7e14;
+}
+
+.severity-critical {
+    color: #dc3545;
+}
+
+/* Attacker list styling */
+.attacker-item {
+    padding: 0.75rem;
+    border-bottom: 1px solid #dee2e6;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.attacker-item:hover {
+    background-color: #f8f9fa;
+}
+
+.attacker-item:last-child {
+    border-bottom: none;
+}
+
+.attacker-ip {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+}
+
+.attack-count {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Alert styling */
+.alert-item {
+    padding: 0.75rem;
+    border-left: 4px solid #dc3545;
+    background-color: #f8d7da;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.alert-item.alert-warning {
+    border-left-color: #ffc107;
+    background-color: #fff3cd;
+}
+
+.alert-item.alert-info {
+    border-left-color: #17a2b8;
+    background-color: #d1ecf1;
+}
+
+/* Honeypot status cards */
+.honeypot-card {
+    border: 2px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.honeypot-card.running {
+    border-color: #28a745;
+    background-color: #d4edda;
+}
+
+.honeypot-card.stopped {
+    border-color: #dc3545;
+    background-color: #f8d7da;
+}
+
+.honeypot-status {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.honeypot-status.running {
+    color: #28a745;
+}
+
+.honeypot-status.stopped {
+    color: #dc3545;
+}
+
+/* Table styling */
+.table th {
+    background-color: #f8f9fa;
+    border-top: none;
+    font-weight: 600;
+    color: #495057;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Button styling */
+.btn {
+    border-radius: 0.375rem;
+    font-weight: 500;
+}
+
+.btn:disabled {
+    opacity: 0.65;
+}
+
+/* Loading spinner */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Toast notifications */
+.toast {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .btn-group .btn {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
+    }
+}
+
+/* Animation for real-time updates */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.updating {
+    animation: pulse 1s infinite;
+}
+
+/* Custom scrollbar */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

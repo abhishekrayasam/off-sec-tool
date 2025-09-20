@@ -1,0 +1,28 @@
+2025-09-20 06:31:09 - root - INFO - Logging configured successfully
+2025-09-20 06:31:10 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-20 06:31:10 - core.honeypot_manager - INFO - Honeypot ssh_honeypot started on port 2222
+2025-09-20 06:31:10 - core.honeypot_manager - INFO - Honeypot web_honeypot started on port 8080
+2025-09-20 06:31:10 - core.honeypot_manager - ERROR - Error running honeypot web_honeypot: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions
+2025-09-20 06:31:10 - core.honeypot_manager - INFO - Honeypot rdp_honeypot started on port 33389
+2025-09-20 06:31:10 - core.honeypot_manager - INFO - Started 3 honeypot servers
+2025-09-20 06:31:10 - core.interceptor - INFO - Traffic interceptor started
+2025-09-20 06:31:10 - core.dashboard - INFO - Monitoring dashboard started
+2025-09-20 06:31:10 - core.interceptor - ERROR - Error in interception loop: Interface 'eth0' not found !
+2025-09-20 06:32:56 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 61305) to honeypot ssh_honeypot
+2025-09-20 06:32:56 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 61305): SSH-2.0-TestClient
+
+2025-09-20 06:32:59 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 61315) to honeypot ssh_honeypot
+2025-09-20 06:32:59 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 61315): admin:admin
+
+2025-09-20 06:33:00 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 61316) to honeypot ssh_honeypot
+2025-09-20 06:33:00 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 61316): admin:password
+
+2025-09-20 06:33:00 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 61317) to honeypot ssh_honeypot
+2025-09-20 06:33:00 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 61317): admin:123456
+
+2025-09-20 06:33:01 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 61318) to honeypot ssh_honeypot
+2025-09-20 06:33:01 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 61318): admin:root
+
+2025-09-20 06:33:01 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 61321) to honeypot ssh_honeypot
+2025-09-20 06:33:01 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 61321): admin:test
+
