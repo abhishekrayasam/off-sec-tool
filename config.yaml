@@ -1,0 +1,88 @@
+# Honeypot Interceptor Configuration
+
+# Network Configuration
+network:
+  interface: "eth0"  # Network interface to monitor
+  target_ports: [22, 23, 80, 443, 3389, 5900, 8080]  # Ports to monitor
+  redirect_ports: [2222, 2323, 8080, 8443, 33389, 55900, 18080]  # Honeypot ports
+
+# Honeypot Servers
+honeypots:
+  - name: "ssh_honeypot"
+    port: 2222
+    service: "ssh"
+    decoy_files: ["/etc/passwd", "/etc/shadow", "/home/user/"]
+    
+  - name: "web_honeypot"
+    port: 8080
+    service: "http"
+    decoy_files: ["/admin/", "/login.php", "/config.php"]
+    
+  - name: "rdp_honeypot"
+    port: 33389
+    service: "rdp"
+    decoy_files: ["/Documents/", "/Desktop/", "/Downloads/"]
+
+# Attack Detection Rules
+detection:
+  suspicious_patterns:
+    - "password"
+    - "admin"
+    - "root"
+    - "exploit"
+    - "payload"
+    - "shell"
+    - "backdoor"
+  
+  rate_limits:
+    max_connections_per_minute: 10
+    max_failed_attempts: 5
+    
+  geo_blocking:
+    enabled: true
+    blocked_countries: ["CN", "RU", "KP"]  # ISO country codes
+
+# File Replacement System
+file_replacement:
+  enabled: true
+  decoy_directory: "./decoy_files"
+  tracking_enabled: true
+  
+  # Files that will be replaced with honeypot versions
+  target_files:
+    - "/etc/passwd"
+    - "/etc/shadow"
+    - "/home/*/Documents/*"
+    - "/var/log/*"
+
+# Attacker Tracking
+tracking:
+  enabled: true
+  database: "sqlite:///attacker_tracking.db"
+  log_level: "INFO"
+  
+  # Information to collect
+  collect:
+    - "ip_address"
+    - "user_agent"
+    - "request_headers"
+    - "file_access_patterns"
+    - "timing_analysis"
+
+# Countermeasures
+countermeasures:
+  enabled: true
+  
+  # Techniques to use against attackers
+  techniques:
+    - "file_entrapment"      # Replace files with tracking versions
+    - "network_poisoning"    # Inject false information
+    - "time_delays"          # Slow down attacker operations
+    - "fake_vulnerabilities" # Present fake security holes
+
+# Logging
+logging:
+  level: "INFO"
+  file: "honeypot_interceptor.log"
+  max_size: "10MB"
+  backup_count: 5
