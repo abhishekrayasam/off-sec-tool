@@ -26,3 +26,170 @@
 2025-09-20 06:33:01 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 61321) to honeypot ssh_honeypot
 2025-09-20 06:33:01 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 61321): admin:test
 
+2025-09-20 17:15:26 - root - INFO - Logging configured successfully
+2025-09-20 17:15:26 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-20 17:16:35 - root - INFO - Logging configured successfully
+2025-09-20 17:16:35 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-20 17:17:52 - root - INFO - Logging configured successfully
+2025-09-20 17:17:52 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-20 17:17:59 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-20 17:17:59 - web_app - INFO - Starting web UI on 0.0.0.0:5000
+2025-09-20 17:17:59 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.8:5000
+2025-09-20 17:17:59 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-20 17:18:05 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:05] "GET / HTTP/1.1" 200 -
+2025-09-20 17:18:08 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:08] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+2025-09-20 17:18:08 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:08] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-09-20 17:18:09 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:09] "GET /api/stats HTTP/1.1" 200 -
+2025-09-20 17:18:09 - core.tracker - ERROR - Error getting recent attacks: Recursive use of cursors not allowed.
+2025-09-20 17:18:09 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:09] "GET /api/attackers?limit=10 HTTP/1.1" 200 -
+2025-09-20 17:18:09 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:09] "GET /api/attacks?limit=20 HTTP/1.1" 200 -
+2025-09-20 17:18:09 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:09] "GET /socket.io/?EIO=4&transport=polling&t=Pbcy_c5 HTTP/1.1" 200 -
+2025-09-20 17:18:09 - web_app - ERROR - Error getting honeypots: 'str' object has no attribute 'name'
+2025-09-20 17:18:09 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:09] "[35m[1mGET /api/honeypots HTTP/1.1[0m" 500 -
+2025-09-20 17:18:09 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:09] "GET /api/alerts HTTP/1.1" 200 -
+2025-09-20 17:18:09 - web_app - ERROR - Error getting status: 'str' object has no attribute 'running'
+2025-09-20 17:18:09 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:09] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-09-20 17:18:09 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-20 17:18:10 - web_app - INFO - Client connected: s2y1r-VVPezGr4LFAAAB
+2025-09-20 17:18:10 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:10] "POST /socket.io/?EIO=4&transport=polling&t=Pbcy_jL&sid=IRc1q9QRjAfcMda9AAAA HTTP/1.1" 200 -
+2025-09-20 17:18:10 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:10] "GET /socket.io/?EIO=4&transport=polling&t=Pbcy_ji&sid=IRc1q9QRjAfcMda9AAAA HTTP/1.1" 200 -
+2025-09-20 17:18:13 - core.honeypot_manager - INFO - Honeypot ssh_honeypot started on port 2222
+2025-09-20 17:18:13 - core.honeypot_manager - INFO - Honeypot web_honeypot started on port 8080
+2025-09-20 17:18:13 - core.honeypot_manager - ERROR - Error running honeypot web_honeypot: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions
+2025-09-20 17:18:13 - core.honeypot_manager - INFO - Honeypot rdp_honeypot started on port 33389
+2025-09-20 17:18:13 - core.honeypot_manager - INFO - Started 3 honeypot servers
+2025-09-20 17:18:13 - core.interceptor - INFO - Traffic interceptor started
+2025-09-20 17:18:13 - web_app - INFO - Honeypot interceptor started
+2025-09-20 17:18:13 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:13] "POST /api/start HTTP/1.1" 200 -
+2025-09-20 17:18:14 - core.interceptor - ERROR - Error in interception loop: Interface 'eth0' not found !
+2025-09-20 17:18:14 - web_app - ERROR - Error getting status: 'str' object has no attribute 'running'
+2025-09-20 17:18:14 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:18:14] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-09-20 17:18:41 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54454) to honeypot ssh_honeypot
+2025-09-20 17:18:41 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54454): SSH-2.0-TestClient
+
+2025-09-20 17:18:45 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54464) to honeypot ssh_honeypot
+2025-09-20 17:18:45 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54464): admin:admin
+
+2025-09-20 17:18:45 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54465) to honeypot ssh_honeypot
+2025-09-20 17:18:45 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54465): admin:password
+
+2025-09-20 17:18:46 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54466) to honeypot ssh_honeypot
+2025-09-20 17:18:46 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54466): admin:123456
+
+2025-09-20 17:18:46 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54467) to honeypot ssh_honeypot
+2025-09-20 17:18:46 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54467): admin:root
+
+2025-09-20 17:18:47 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54468) to honeypot ssh_honeypot
+2025-09-20 17:18:47 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54468): admin:test
+
+2025-09-20 17:21:42 - root - INFO - Logging configured successfully
+2025-09-20 17:21:42 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-20 17:21:42 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-20 17:21:42 - web_app - INFO - Starting web UI on 0.0.0.0:5000
+2025-09-20 17:21:42 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.8:5000
+2025-09-20 17:21:42 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-20 17:21:55 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:21:55] "GET / HTTP/1.1" 200 -
+2025-09-20 17:21:55 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:21:55] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+2025-09-20 17:21:55 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:21:55] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-09-20 17:21:56 - core.tracker - ERROR - Error getting recent attacks: Recursive use of cursors not allowed.
+2025-09-20 17:21:56 - web_app - ERROR - Error getting honeypots: 'str' object has no attribute 'name'
+2025-09-20 17:21:56 - core.tracker - ERROR - Error getting top attackers: Recursive use of cursors not allowed.
+2025-09-20 17:21:56 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:21:56] "GET /api/attacks?limit=20 HTTP/1.1" 200 -
+2025-09-20 17:21:56 - core.tracker - ERROR - Error getting attacker stats: Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.
+2025-09-20 17:21:56 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:21:56] "GET /socket.io/?EIO=4&transport=polling&t=Pbczssx HTTP/1.1" 200 -
+2025-09-20 17:21:56 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:21:56] "[35m[1mGET /api/honeypots HTTP/1.1[0m" 500 -
+2025-09-20 17:21:56 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:21:56] "GET /api/attackers?limit=10 HTTP/1.1" 200 -
+2025-09-20 17:21:56 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:21:56] "GET /api/stats HTTP/1.1" 200 -
+2025-09-20 17:21:56 - web_app - ERROR - Error getting status: 'str' object has no attribute 'running'
+2025-09-20 17:21:56 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:21:56] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-09-20 17:21:56 - werkzeug - INFO - 127.0.0.1 - - [20/Sep/2025 17:21:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-20 17:22:14 - root - INFO - Logging configured successfully
+2025-09-20 17:22:14 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-20 17:22:14 - core.honeypot_manager - INFO - Honeypot ssh_honeypot started on port 2222
+2025-09-20 17:22:14 - core.honeypot_manager - INFO - Honeypot web_honeypot started on port 8080
+2025-09-20 17:22:14 - core.honeypot_manager - ERROR - Error running honeypot web_honeypot: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions
+2025-09-20 17:22:14 - core.honeypot_manager - INFO - Honeypot rdp_honeypot started on port 33389
+2025-09-20 17:22:14 - core.honeypot_manager - INFO - Started 3 honeypot servers
+2025-09-20 17:22:14 - core.interceptor - INFO - Traffic interceptor started
+2025-09-20 17:22:14 - core.dashboard - INFO - Monitoring dashboard started
+2025-09-20 17:22:14 - core.interceptor - ERROR - Error in interception loop: Interface 'eth0' not found !
+2025-09-20 17:23:25 - core.interceptor - INFO - Traffic interceptor stopped
+2025-09-20 17:23:30 - core.honeypot_manager - INFO - Honeypot ssh_honeypot stopped
+2025-09-20 17:23:32 - core.honeypot_manager - INFO - Honeypot web_honeypot stopped
+2025-09-20 17:23:37 - core.honeypot_manager - INFO - Honeypot rdp_honeypot stopped
+2025-09-20 17:23:37 - core.honeypot_manager - INFO - Stopped all honeypot servers
+2025-09-20 17:23:37 - core.dashboard - INFO - Monitoring dashboard stopped
+2025-09-20 17:23:44 - root - INFO - Logging configured successfully
+2025-09-20 17:23:44 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-20 17:23:44 - core.honeypot_manager - INFO - Honeypot ssh_honeypot started on port 2222
+2025-09-20 17:23:44 - core.honeypot_manager - INFO - Honeypot web_honeypot started on port 8080
+2025-09-20 17:23:44 - core.honeypot_manager - ERROR - Error running honeypot web_honeypot: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions
+2025-09-20 17:23:44 - core.honeypot_manager - INFO - Honeypot rdp_honeypot started on port 33389
+2025-09-20 17:23:44 - core.honeypot_manager - INFO - Started 3 honeypot servers
+2025-09-20 17:23:44 - core.interceptor - INFO - Traffic interceptor started
+2025-09-20 17:23:44 - core.dashboard - INFO - Monitoring dashboard started
+2025-09-20 17:23:44 - core.interceptor - ERROR - Error in interception loop: Interface 'eth0' not found !
+2025-09-20 17:24:43 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54806) to honeypot ssh_honeypot
+2025-09-20 17:24:51 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54820) to honeypot ssh_honeypot
+2025-09-20 17:24:51 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54820): admin:admin
+
+2025-09-20 17:24:51 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54821) to honeypot ssh_honeypot
+2025-09-20 17:24:51 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54821): admin:password
+
+2025-09-20 17:24:52 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54822) to honeypot ssh_honeypot
+2025-09-20 17:24:52 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54822): admin:123456
+
+2025-09-20 17:24:52 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54823) to honeypot ssh_honeypot
+2025-09-20 17:24:52 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54823): admin:root
+
+2025-09-20 17:24:53 - core.honeypot_manager - INFO - Connection from ('127.0.0.1', 54824) to honeypot ssh_honeypot
+2025-09-20 17:24:53 - core.honeypot_manager - INFO - SSH attempt from ('127.0.0.1', 54824): admin:test
+
+2025-09-23 09:41:03 - root - INFO - Logging configured successfully
+2025-09-23 09:41:03 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-23 09:41:09 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-23 09:41:09 - web_app - INFO - Starting web UI on 0.0.0.0:5000
+2025-09-23 09:41:09 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.8:5000
+2025-09-23 09:41:09 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-23 09:41:12 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:41:12] "GET / HTTP/1.1" 200 -
+2025-09-23 09:41:12 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:41:12] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2025-09-23 09:41:13 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:41:13] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2025-09-23 09:41:13 - core.tracker - ERROR - Error getting top attackers: Recursive use of cursors not allowed.
+2025-09-23 09:41:13 - web_app - ERROR - Error getting honeypots: 'str' object has no attribute 'name'
+2025-09-23 09:41:13 - web_app - ERROR - Error getting status: 'str' object has no attribute 'running'
+2025-09-23 09:51:15 - root - INFO - Logging configured successfully
+2025-09-23 09:51:15 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-23 09:51:16 - core.tracker - INFO - Database initialized: attacker_tracking.db
+2025-09-23 09:51:16 - web_app - INFO - Starting web UI on 0.0.0.0:5000
+2025-09-23 09:51:16 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.8:5000
+2025-09-23 09:51:16 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-23 09:51:22 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:22] "GET / HTTP/1.1" 200 -
+2025-09-23 09:51:23 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:23] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+2025-09-23 09:51:23 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:23] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-09-23 09:51:24 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:24] "GET /socket.io/?EIO=4&transport=polling&t=PbqpWcY HTTP/1.1" 200 -
+2025-09-23 09:51:24 - core.tracker - ERROR - Error getting top attackers: Recursive use of cursors not allowed.
+2025-09-23 09:51:24 - core.tracker - ERROR - Error getting recent attacks: Recursive use of cursors not allowed.
+2025-09-23 09:51:24 - web_app - ERROR - Error getting honeypots: 'str' object has no attribute 'name'
+2025-09-23 09:51:24 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:24] "GET /api/attackers?limit=10 HTTP/1.1" 200 -
+2025-09-23 09:51:24 - core.tracker - ERROR - Error getting attacker stats: bad parameter or other API misuse
+2025-09-23 09:51:24 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:24] "GET /api/attacks?limit=20 HTTP/1.1" 200 -
+2025-09-23 09:51:24 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:24] "[35m[1mGET /api/honeypots HTTP/1.1[0m" 500 -
+2025-09-23 09:51:24 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:24] "GET /api/stats HTTP/1.1" 200 -
+2025-09-23 09:51:24 - web_app - ERROR - Error getting status: 'str' object has no attribute 'running'
+2025-09-23 09:51:24 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:24] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-09-23 09:51:24 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-23 09:51:24 - web_app - INFO - Client connected: lmH2w6CB17spX49wAAAB
+2025-09-23 09:51:24 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:24] "POST /socket.io/?EIO=4&transport=polling&t=PbqpWhg&sid=0DLUjWQktn3MPyQHAAAA HTTP/1.1" 200 -
+2025-09-23 09:51:24 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 09:51:24] "GET /socket.io/?EIO=4&transport=polling&t=PbqpWhr&sid=0DLUjWQktn3MPyQHAAAA HTTP/1.1" 200 -

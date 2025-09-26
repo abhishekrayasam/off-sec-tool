@@ -22,6 +22,7 @@ from core.file_replacer import FileReplacer
 from core.tracker import AttackerTracker
 from core.dashboard import MonitoringDashboard
 from utils.logger import setup_logging
+from core.anomaly_engine import AnomalyEngine
 
 console = Console()
 
@@ -53,13 +54,15 @@ class HoneypotInterceptor:
             # Initialize components
             self.tracker = AttackerTracker(self.config.get('tracking', {}))
             self.detector = AttackDetector(self.config.get('detection', {}))
+            self.anomaly_engine = AnomalyEngine(self.config.get('anomaly_detection', {}))
             self.file_replacer = FileReplacer(self.config.get('file_replacement', {}))
             self.honeypot_manager = HoneypotManager(self.config.get('honeypots', []))
             self.interceptor = TrafficInterceptor(
                 self.config.get('network', {}),
                 self.detector,
                 self.honeypot_manager,
-                self.tracker
+                self.tracker,
+                self.anomaly_engine
             )
             self.dashboard = MonitoringDashboard(self.tracker)
             

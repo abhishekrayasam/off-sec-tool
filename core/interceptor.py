@@ -12,10 +12,12 @@ from scapy.all import *
 from scapy.layers.inet import IP, TCP, UDP
 from scapy.layers.l2 import Ether
 import logging
+from datetime import datetime
 
 from .attack_detector import AttackDetector
 from .honeypot_manager import HoneypotManager
 from .tracker import AttackerTracker
+from .anomaly_engine import AnomalyEngine
 
 logger = logging.getLogger(__name__)
 
@@ -23,11 +25,12 @@ class TrafficInterceptor:
     """Intercepts network traffic and redirects malicious connections to honeypots"""
     
     def __init__(self, network_config: Dict, detector: AttackDetector, 
-                 honeypot_manager: HoneypotManager, tracker: AttackerTracker):
+                 honeypot_manager: HoneypotManager, tracker: AttackerTracker, anomaly_engine: AnomalyEngine = None):
         self.network_config = network_config
         self.detector = detector
         self.honeypot_manager = honeypot_manager
         self.tracker = tracker
+        self.anomaly_engine = anomaly_engine
         
         self.interface = network_config.get('interface', 'eth0')
         self.target_ports = network_config.get('target_ports', [22, 80, 443])
@@ -93,6 +96,26 @@ class TrafficInterceptor:
                     # Analyze packet for malicious patterns
                     is_malicious = self.detector.analyze_packet(packet)
                     
+                    # Run anomaly scoring (best-effort) using src_ip as entity
+                    if self.anomaly_engine:
+                        try:
+                            anomaly_context = {
+                                'src_ip': src_ip,
+                                'dst_ip': dst_ip,
+                                'port': dst_port,
+                                'country': self.tracker._get_country_info(src_ip) if self.tracker else 'Unknown',
+                                'src_mac': packet[Ether].src if Ether in packet else None,
+                                'app': f"tcp:{dst_port}",
+                                'timestamp': datetime.utcnow(),
+                            }
+                            anomaly = self.anomaly_engine.update_and_score(entity_id=src_ip, context=anomaly_context)
+                            if anomaly and anomaly.get('total_score', 0) > 0:
+                                # Persist anomaly via tracker if available
+                                if hasattr(self.tracker, 'record_anomaly'):
+                                    self.tracker.record_anomaly(src_ip=src_ip, dst_ip=dst_ip, details=anomaly)
+                        except Exception as _:
+                            pass
+
                     if is_malicious:
                         logger.info(f"Malicious packet detected from {src_ip}:{src_port}")
                         

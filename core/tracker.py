@@ -71,6 +71,26 @@ class AttackerTracker:
                 )
             ''')
             
+            # Anomalies table
+            self.cursor.execute('''
+                CREATE TABLE IF NOT EXISTS anomalies (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    src_ip TEXT NOT NULL,
+                    dst_ip TEXT,
+                    total_score INTEGER,
+                    traffic_patterns INTEGER,
+                    location INTEGER,
+                    device INTEGER,
+                    applications INTEGER,
+                    time_bucket INTEGER,
+                    country TEXT,
+                    device_id TEXT,
+                    app TEXT,
+                    raw_details TEXT
+                )
+            ''')
+            
             # File access table
             self.cursor.execute('''
                 CREATE TABLE IF NOT EXISTS file_access (
@@ -161,6 +181,37 @@ class AttackerTracker:
             
         except Exception as e:
             logger.error(f"Error recording attack: {e}")
+
+    def record_anomaly(self, src_ip: str, dst_ip: str = None, details: Dict = None):
+        """Persist anomaly scoring details to the database."""
+        try:
+            if not self.enabled or not self.cursor or not details:
+                return
+            scores = (details.get('scores') or {})
+            context = (details.get('context') or {})
+            self.cursor.execute('''
+                INSERT INTO anomalies (
+                    src_ip, dst_ip, total_score,
+                    traffic_patterns, location, device, applications, time_bucket,
+                    country, device_id, app, raw_details
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (
+                src_ip,
+                dst_ip,
+                int(details.get('total_score', 0)),
+                int(scores.get('traffic_patterns', 0)),
+                int(scores.get('location', 0)),
+                int(scores.get('device', 0)),
+                int(scores.get('applications', 0)),
+                int(context.get('time_bucket', 0)),
+                str(context.get('country', 'Unknown')),
+                str(context.get('device', 'Unknown')),
+                str(context.get('app', 'Unknown')),
+                json.dumps(details, default=str)
+            ))
+            self.conn.commit()
+        except Exception as e:
+            logger.error(f"Error recording anomaly: {e}")
     
     def record_file_access(self, src_ip: str, file_path: str, access_type: str = 'read', 
                           tracking_data: Dict = None):

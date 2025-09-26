@@ -86,3 +86,14 @@ logging:
   file: "honeypot_interceptor.log"
   max_size: "10MB"
   backup_count: 5
+
+# Anomaly Detection (five-point scoring)
+anomaly_detection:
+  window_hours: 24
+  min_samples_for_strict: 50
+  connection_rate_threshold: 3.0
+  port_novelty_threshold: 0.05
+  location_change_penalty: 2
+  device_change_penalty: 2
+  app_change_penalty: 1
+  time_bucket_hours: 1
